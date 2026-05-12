@@ -1,4 +1,4 @@
-# Contributing Guide
+# コントリビューションガイド
 
 このリポジトリへの改善提案・テンプレート拡張・サンプル追加を歓迎します。
 
@@ -26,13 +26,13 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-  participant Contributor as Contributor
-  participant Maintainer as Maintainer
-  participant Repo as Repository
+  actor Contributor as コントリビュータ
+  actor Maintainer as メンテナ
+  participant Repo as リポジトリ
 
   Contributor->>Repo: Issueを作成
   Maintainer-->>Contributor: 方向性/スコープをコメント
-  Contributor->>Repo: DraftPRを作成
+  Contributor->>Repo: Draft PRを作成
   Maintainer->>Repo: レビューコメントを投稿
   Contributor->>Repo: 修正コミットを反映
   Maintainer->>Repo: 承認してマージ
@@ -59,7 +59,7 @@ sequenceDiagram
 
 - 仕様は可能な限りテスト可能な文で書く
 - あいまいな表現を避ける
-- 未確定事項は `Open Issues` として明記する
+- 未確定事項は `未解決-XX` として明記する
 
 詳しくは `docs/writing-guide.md` を参照してください。
 

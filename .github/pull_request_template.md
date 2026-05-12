@@ -9,12 +9,15 @@
 
 ## 影響範囲
 
-- [ ] `README.md`
-- [ ] `template.md`
-- [ ] `examples/`
-- [ ] `docs/`
-- [ ] `CONTRIBUTING.md`
+- [ ] テンプレート本体(`template.md`)
+- [ ] 記述ガイド(`docs/`)
+- [ ] サンプル(`examples/`)
+- [ ] 運用ドキュメント(`README.md` / `CONTRIBUTING.md` / `CHANGELOG.md`)
+- [ ] GitHub運用(Issue/PR Template・Workflow)
+- [ ] CI/品質設定(lint・formatter)
 - [ ] その他
+
+具体的な変更ファイル(任意):
 
 ## 確認方法
 

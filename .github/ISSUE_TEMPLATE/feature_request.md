@@ -1,5 +1,5 @@
 ---
-name: Feature request
+name: 機能改善の提案
 about: テンプレート改善や新規追加の提案
 title: "[Feature] "
 labels: enhancement
@@ -20,11 +20,15 @@ assignees: ""
 
 ## 対象ファイル
 
-- [ ] `README.md`
-- [ ] `template.md`
-- [ ] `examples/`
-- [ ] `docs/`
+- [ ] テンプレート本体(`template.md`)
+- [ ] 記述ガイド(`docs/`)
+- [ ] サンプル(`examples/`)
+- [ ] 運用ドキュメント(`README.md` / `CONTRIBUTING.md` / `CHANGELOG.md`)
+- [ ] GitHub運用(Issue/PR Template・Workflow)
+- [ ] CI/品質設定(lint・formatter)
 - [ ] その他
+
+具体的な変更ファイル(任意):
 
 ## 受け入れ基準(任意)
 
