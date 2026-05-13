@@ -82,6 +82,13 @@ sequenceDiagram
 .
 ├── README.md
 ├── template.md
+├── assets/
+│   └── screens/
+│       ├── _template/         # template.md が参照する汎用ワイヤーフレーム
+│       ├── saas-feature/      # examples/saas-feature-sample.md 用
+│       └── order-management/  # examples/order-management-sample.md 用
+├── scripts/
+│   └── generate_screen_placeholders.py
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
@@ -119,16 +126,17 @@ sequenceDiagram
 5. 業務要求
 6. 利用要求・ユースケース
 7. 機能要求(受け入れ基準・Given-When-Then)
-8. 非機能要求(ISO/IEC 25010 参照注記)
-9. 制約条件
-10. 外部連携要求
-11. 前提条件・依存関係
-12. 未解決事項
-13. **トレーサビリティ**(業務〜テストの対応表)
-14. **データ要求**
-15. **リスク**
-16. 用語定義
-17. 変更履歴
+8. **画面要求**(UIイメージ・主要要素・遷移)
+9. 非機能要求(ISO/IEC 25010 参照注記)
+10. 制約条件
+11. 外部連携要求
+12. 前提条件・依存関係
+13. 未解決事項
+14. **トレーサビリティ**(業務〜テストの対応表)
+15. **データ要求**
+16. **リスク**
+17. 用語定義
+18. 変更履歴
 
 ## 使い方
 
@@ -143,6 +151,16 @@ sequenceDiagram
 
 - 記述ルールとレビュー観点: [`docs/writing-guide.md`](docs/writing-guide.md)
 - 記入済みサンプル: [`examples/`](examples/)
+
+## 画面プレースホルダーの再生成(任意)
+
+`examples/` に含まれる画面要求のプレースホルダー画像は、`scripts/generate_screen_placeholders.py` で再生成できます。`rsvg-convert`(librsvg)と Noto Sans CJK JP フォントがインストールされている環境で次を実行してください。
+
+```bash
+python3 scripts/generate_screen_placeholders.py
+```
+
+新規プロジェクトでは、本物のキャプチャ/モックアップ画像を `assets/screens/` に直接配置してください(スクリプトの利用は任意です)。
 
 ## 品質チェック(Markdown)
 
@@ -185,6 +203,7 @@ GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行
 | IF-XX | 連携-XX |
 | ASM-XX | 前提-XX |
 | OI-XX | 未解決-XX |
+| UI-XX(新規) | 画面-XX |
 | REQ-XXXX | 要件-XXXX |
 | Must / Should / Could | 必須 / 推奨 / 任意 |
 | Scope IN / Scope OUT | スコープ内 / スコープ外 |
