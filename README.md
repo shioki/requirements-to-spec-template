@@ -76,6 +76,11 @@ sequenceDiagram
 - 顧客との合意形成に使える仕様書フォーマットが必要なプロダクトマネージャー(PM)/プロダクトオーナー(PO)
 - AI実装前に仕様の曖昧さを減らしたいエンジニア
 
+## AI での使い方
+
+- [会議メモから要求仕様書を起こす](docs/prompts/meeting-notes-to-spec.md)
+- [仕様書の曖昧語をレビューする](docs/prompts/ambiguity-review.md)
+
 ## リポジトリ構成
 
 ```text
@@ -95,7 +100,10 @@ sequenceDiagram
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
 ├── docs/
-│   └── writing-guide.md
+│   ├── writing-guide.md
+│   └── prompts/
+│       ├── meeting-notes-to-spec.md
+│       └── ambiguity-review.md
 ├── .github/
 │   ├── workflows/
 │   │   └── lint.yml
