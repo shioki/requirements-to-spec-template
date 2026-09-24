@@ -88,7 +88,8 @@ sequenceDiagram
 │       ├── saas-feature/      # examples/saas-feature-sample.md 用
 │       └── order-management/  # examples/order-management-sample.md 用
 ├── scripts/
-│   └── generate_screen_placeholders.py
+│   ├── generate_screen_placeholders.py
+│   └── check_mermaid.py
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
@@ -102,6 +103,7 @@ sequenceDiagram
 │   │   └── feature_request.md
 │   └── pull_request_template.md
 ├── .editorconfig
+├── .lycheeignore
 ├── .markdownlint.jsonc
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -166,7 +168,11 @@ python3 scripts/generate_screen_placeholders.py
 
 ## 品質チェック(Markdown)
 
-Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github/workflows/lint.yml) が `markdownlint-cli2` による Markdown 検査を実行します。設定は [`.markdownlint.jsonc`](.markdownlint.jsonc) です。
+Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github/workflows/lint.yml) が次を実行します。
+
+- `markdownlint-cli2` による Markdown 検査。設定は [`.markdownlint.jsonc`](.markdownlint.jsonc)
+- `lychee` によるリンク切れ検査
+- `@mermaid-js/mermaid-cli` による Mermaid 構文検査(`scripts/check_mermaid.py`)
 
 ローカルではリポジトリルートで次を実行します。
 

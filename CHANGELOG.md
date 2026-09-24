@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
+
 ### Changed
 
 - Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除
