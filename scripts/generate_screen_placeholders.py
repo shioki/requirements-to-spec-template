@@ -249,7 +249,7 @@ def svg_order_error_list() -> str:
   <rect x="284" y="496" width="220" height="40" rx="6" fill="#2d6cdf"/>
   <text x="394" y="521" text-anchor="middle" fill="#ffffff" font-family="{FONT_FAMILY}" font-size="13" font-weight="bold">修正済CSV再アップロード</text>
 
-  <text x="760" y="544" text-anchor="end" fill="#9aa3b5" font-family="{FONT_FAMILY}" font-size="11">order-management / 画面-02_エラー一覧</text>
+  <text x="760" y="544" text-anchor="end" fill="#9aa3b5" font-family="{FONT_FAMILY}" font-size="11">order-management / 画面-02_エラー一覧_エラー</text>
 </svg>
 """
 
@@ -288,7 +288,7 @@ def main() -> int:
     render("saas-feature", "画面-02_閲覧拒否_期限切れ", svg_saas_share_link_denied())
 
     render("order-management", "画面-01_受注取込_初期", svg_order_import_initial())
-    render("order-management", "画面-02_エラー一覧", svg_order_error_list())
+    render("order-management", "画面-02_エラー一覧_エラー", svg_order_error_list())
 
     return 0
 
