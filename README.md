@@ -207,5 +207,6 @@ GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行
 | OI-XX | 未解決-XX |
 | UI-XX(新規) | 画面-XX |
 | REQ-XXXX | 要件-XXXX |
+| TC-XXX | 試験-XX |
 | Must / Should / Could | 必須 / 推奨 / 任意 |
 | Scope IN / Scope OUT | スコープ内 / スコープ外 |
