@@ -82,6 +82,7 @@ sequenceDiagram
 .
 ├── README.md
 ├── template.md
+├── template-lite.md
 ├── assets/
 │   └── screens/
 │       ├── _template/         # template.md が参照する汎用ワイヤーフレーム
@@ -117,6 +118,7 @@ sequenceDiagram
 | --- | --- |
 | [`examples/order-management-sample.md`](examples/order-management-sample.md) | 受注CSV取り込みの記入例 |
 | [`examples/saas-feature-sample.md`](examples/saas-feature-sample.md) | SaaSの機能追加(共有リンク)の記入例 |
+| [`template-lite.md`](template-lite.md) | 小規模案件向けの最小テンプレート(目的・スコープ・業務・利用・機能・未解決) |
 
 ## テンプレート構成(`template.md`)
 
