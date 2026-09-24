@@ -6,6 +6,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除
+- 表組みを compact スタイルに揃え、強調だけの行を見出しまたは本文にして markdownlint を通過できるようにした
+
 ## [0.2.0] - 2026-09-25
 
 ### Added

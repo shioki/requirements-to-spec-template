@@ -93,10 +93,10 @@ sequenceDiagram
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
 ├── docs/
-│   ├── writing-guide.md
-│   └── samples/
-│       └── github-actions-markdown-lint.yml
+│   └── writing-guide.md
 ├── .github/
+│   ├── workflows/
+│   │   └── lint.yml
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.md
 │   │   └── feature_request.md
@@ -166,9 +166,7 @@ python3 scripts/generate_screen_placeholders.py
 
 ## 品質チェック(Markdown)
 
-GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行う場合は、[`docs/samples/github-actions-markdown-lint.yml`](docs/samples/github-actions-markdown-lint.yml) を `.github/workflows/lint.yml` にコピーして有効化してください(Personal Access Token 等で `workflow` スコープが必要な環境があります)。
-
-ローカルでは [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) をインストールし、リポジトリルートで実行できます。
+Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github/workflows/lint.yml) が `markdownlint-cli2` による Markdown 検査を実行します。設定は [`.markdownlint.jsonc`](.markdownlint.jsonc) です。
 
 **任意:** [textlint](https://textlint.github.io/) で技術文書ルールや表記揺れチェックを追加する場合は、チーム方針に合わせて `.textlintrc` を導入してください。
 
