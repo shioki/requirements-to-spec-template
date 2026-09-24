@@ -168,6 +168,12 @@ python3 scripts/generate_screen_placeholders.py
 
 Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github/workflows/lint.yml) が `markdownlint-cli2` による Markdown 検査を実行します。設定は [`.markdownlint.jsonc`](.markdownlint.jsonc) です。
 
+ローカルではリポジトリルートで次を実行します。
+
+```bash
+npx markdownlint-cli2 "**/*.md"
+```
+
 **任意:** [textlint](https://textlint.github.io/) で技術文書ルールや表記揺れチェックを追加する場合は、チーム方針に合わせて `.textlintrc` を導入してください。
 
 ## リリース履歴
