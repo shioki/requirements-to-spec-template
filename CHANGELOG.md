@@ -16,6 +16,7 @@
 - Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除
 - README にローカルでの `npx markdownlint-cli2 "**/*.md"` 実行手順を記載
 - 表組みを compact スタイルに揃え、強調だけの行を見出しまたは本文にして markdownlint を通過できるようにした
+- 非機能要求の参照規格を ISO/IEC 25010:2023(JIS X 25010:2025)に更新した
 
 ## [0.2.0] - 2026-09-25
 
