@@ -38,26 +38,17 @@ sequenceDiagram
   Maintainer->>Repo: 承認してマージ
 ```
 
-## Issue 作成時の推奨テンプレート
+## Issue / Pull Request
 
-以下を最低限記載してください。
+項目の定義は次のテンプレートだけを正とする。
 
-- 背景:
-- 期待する結果:
-- 対象ファイル:
-- 補足:
-
-## Pull Request 作成時の推奨テンプレート
-
-- 目的:
-- 変更点:
-- 影響範囲:
-- 確認方法:
-- 未解決事項:
+- バグ報告: [`.github/ISSUE_TEMPLATE/bug_report.md`](.github/ISSUE_TEMPLATE/bug_report.md)
+- 改善提案: [`.github/ISSUE_TEMPLATE/feature_request.md`](.github/ISSUE_TEMPLATE/feature_request.md)
+- Pull Request: [`.github/pull_request_template.md`](.github/pull_request_template.md)
 
 ## 記述ルール
 
-- 仕様は可能な限りテスト可能な文で書く
+- 仕様はテスト可能な文で書く
 - あいまいな表現を避ける
 - 未確定事項は `未解決-XX` として明記する
 
