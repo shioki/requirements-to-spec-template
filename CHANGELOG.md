@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-25
+
 ### Added
 
 - **画面要求(UIイメージ)セクション**を新規追加(`画面-XX` プレフィックス、画面一覧・画面詳細・代替テキスト記述ルール)
@@ -40,6 +42,9 @@
 - `LICENSE` (MIT)
 - `CONTRIBUTING.md`
 - 公開向けに整理した `README.md`
+
+[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.1.0...v0.2.0
 
 ---
 

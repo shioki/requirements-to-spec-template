@@ -193,7 +193,7 @@ GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行
 
 ## 旧IDから新IDへの対応(破壊的変更)
 
-次リリースで、IDプレフィックスを日本語接頭辞に統一します。詳細は [CHANGELOG.md](./CHANGELOG.md) の `[Unreleased]` を参照してください。
+v0.2.0 で、IDプレフィックスを日本語接頭辞に統一しました。詳細は [CHANGELOG.md](./CHANGELOG.md) の `[0.2.0]` を参照してください。
 
 | 旧ID | 新ID |
 | --- | --- |
