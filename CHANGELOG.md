@@ -10,6 +10,7 @@
 
 - リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
 - `.gitignore` を追加
+- `template.md` を他リポジトリへコピーするとき、画面画像ディレクトリも一緒にコピーするか自プロジェクトの画像へ差し替える注意を README とテンプレートに記載
 
 ### Changed
 
