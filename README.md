@@ -163,6 +163,7 @@ sequenceDiagram
 
 ```bash
 python3 scripts/generate_screen_placeholders.py
+python3 scripts/generate_screen_placeholders.py --only order-management
 ```
 
 新規プロジェクトでは、本物のキャプチャ/モックアップ画像を `assets/screens/` に直接配置してください(スクリプトの利用は任意です)。
