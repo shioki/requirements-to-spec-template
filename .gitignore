@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# OS
+.DS_Store
+
+# 画面プレースホルダー生成の一時ファイル
+*.svg.tmp
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+*~
+
+# ローカル依存
+node_modules/

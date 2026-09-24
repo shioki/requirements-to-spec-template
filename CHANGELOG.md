@@ -9,6 +9,7 @@
 ### Added
 
 - リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
+- `.gitignore` を追加
 
 ### Changed
 

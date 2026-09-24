@@ -103,6 +103,7 @@ sequenceDiagram
 │   │   └── feature_request.md
 │   └── pull_request_template.md
 ├── .editorconfig
+├── .gitignore
 ├── .lycheeignore
 ├── .markdownlint.jsonc
 ├── CHANGELOG.md
