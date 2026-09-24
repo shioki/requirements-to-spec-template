@@ -95,7 +95,8 @@ sequenceDiagram
 │       └── order-management/  # examples/order-management-sample.md 用
 ├── scripts/
 │   ├── generate_screen_placeholders.py
-│   └── check_mermaid.py
+│   ├── check_mermaid.py
+│   └── check_ids.py
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
@@ -185,11 +186,13 @@ Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github
 - `markdownlint-cli2` による Markdown 検査。設定は [`.markdownlint.jsonc`](.markdownlint.jsonc)
 - `lychee` によるリンク切れ検査
 - `@mermaid-js/mermaid-cli` による Mermaid 構文検査(`scripts/check_mermaid.py`)
+- `scripts/check_ids.py` による要求IDとトレーサビリティの整合検査
 
 ローカルではリポジトリルートで次を実行します。
 
 ```bash
 npx markdownlint-cli2 "**/*.md"
+python3 scripts/check_ids.py examples/*.md
 ```
 
 **任意:** [textlint](https://textlint.github.io/) で技術文書ルールや表記揺れチェックを追加する場合は、チーム方針に合わせて `.textlintrc` を導入してください。
