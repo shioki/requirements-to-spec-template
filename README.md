@@ -76,32 +76,45 @@ sequenceDiagram
 - 顧客との合意形成に使える仕様書フォーマットが必要なプロダクトマネージャー(PM)/プロダクトオーナー(PO)
 - AI実装前に仕様の曖昧さを減らしたいエンジニア
 
+## AI での使い方
+
+- [会議メモから要求仕様書を起こす](docs/prompts/meeting-notes-to-spec.md)
+- [仕様書の曖昧語をレビューする](docs/prompts/ambiguity-review.md)
+
 ## リポジトリ構成
 
 ```text
 .
 ├── README.md
 ├── template.md
+├── template-lite.md
 ├── assets/
 │   └── screens/
 │       ├── _template/         # template.md が参照する汎用ワイヤーフレーム
 │       ├── saas-feature/      # examples/saas-feature-sample.md 用
 │       └── order-management/  # examples/order-management-sample.md 用
 ├── scripts/
-│   └── generate_screen_placeholders.py
+│   ├── generate_screen_placeholders.py
+│   ├── check_mermaid.py
+│   └── check_ids.py
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
 ├── docs/
 │   ├── writing-guide.md
-│   └── samples/
-│       └── github-actions-markdown-lint.yml
+│   └── prompts/
+│       ├── meeting-notes-to-spec.md
+│       └── ambiguity-review.md
 ├── .github/
+│   ├── workflows/
+│   │   └── lint.yml
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.md
 │   │   └── feature_request.md
 │   └── pull_request_template.md
 ├── .editorconfig
+├── .gitignore
+├── .lycheeignore
 ├── .markdownlint.jsonc
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -114,33 +127,36 @@ sequenceDiagram
 | --- | --- |
 | [`examples/order-management-sample.md`](examples/order-management-sample.md) | 受注CSV取り込みの記入例 |
 | [`examples/saas-feature-sample.md`](examples/saas-feature-sample.md) | SaaSの機能追加(共有リンク)の記入例 |
+| [`template-lite.md`](template-lite.md) | 小規模案件向けの最小テンプレート(目的・スコープ・業務・利用・機能・未解決) |
 
 ## テンプレート構成(`template.md`)
 
-`template.md` は次のセクションで構成されています。
+`template.md` の見出しは次のとおりです。
 
-1. **ID凡例とプレフィックス** — 業務/利用/機能などの接頭辞の意味
-2. ドキュメント管理
-3. プロジェクト概要(目的・背景・スコープ・成功指標(KPI))
-4. ステークホルダー分析
-5. 業務要求
-6. 利用要求・ユースケース
-7. 機能要求(受け入れ基準・Given-When-Then)
-8. **画面要求**(UIイメージ・主要要素・遷移)
-9. 非機能要求(ISO/IEC 25010 参照注記)
-10. 制約条件
-11. 外部連携要求
-12. 前提条件・依存関係
-13. 未解決事項
-14. **トレーサビリティ**(業務〜テストの対応表)
-15. **データ要求**
-16. **リスク**
-17. 用語定義
-18. 変更履歴
+- ID凡例とプレフィックス
+- 記入の流れ(参照図)
+- レビュー運用シーケンス(参照図)
+- ドキュメント管理
+- `1. プロジェクト概要`
+- `2. ステークホルダー分析`
+- `3. 業務要求`
+- `4. 利用要求・ユースケース`
+- `5. 機能要求`
+- `6. 画面要求(UIイメージ)`
+- `7. 非機能要求`
+- `8. 制約条件`
+- `9. 外部連携要求`
+- `10. 前提条件・依存関係`
+- `11. 未解決事項`
+- `12. トレーサビリティ`
+- `13. データ要求`
+- `14. リスク`
+- `15. 用語定義`
+- 変更履歴
 
 ## 使い方
 
-1. `template.md` をコピーして新規要求仕様書を作成する
+1. `template.md` をコピーして新規要求仕様書を作成する。画面画像は `assets/screens/_template/` を参照している。`template.md` だけを別リポジトリへコピーすると画像パスが切れるので、画像ディレクトリも一緒にコピーするか、自プロジェクトの画像に差し替える
 2. 「目的」「スコープ内/外」「成功指標」を先に確定する
 3. **業務 → 利用 → 機能** の順に詳細化する
 4. 機能ごとに受け入れ基準をチェック可能な文で記述する
@@ -158,15 +174,26 @@ sequenceDiagram
 
 ```bash
 python3 scripts/generate_screen_placeholders.py
+python3 scripts/generate_screen_placeholders.py --only order-management
 ```
 
 新規プロジェクトでは、本物のキャプチャ/モックアップ画像を `assets/screens/` に直接配置してください(スクリプトの利用は任意です)。
 
 ## 品質チェック(Markdown)
 
-GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行う場合は、[`docs/samples/github-actions-markdown-lint.yml`](docs/samples/github-actions-markdown-lint.yml) を `.github/workflows/lint.yml` にコピーして有効化してください(Personal Access Token 等で `workflow` スコープが必要な環境があります)。
+Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github/workflows/lint.yml) が次を実行します。
 
-ローカルでは [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) をインストールし、リポジトリルートで実行できます。
+- `markdownlint-cli2` による Markdown 検査。設定は [`.markdownlint.jsonc`](.markdownlint.jsonc)
+- `lychee` によるリンク切れ検査
+- `@mermaid-js/mermaid-cli` による Mermaid 構文検査(`scripts/check_mermaid.py`)
+- `scripts/check_ids.py` による要求IDとトレーサビリティの整合検査
+
+ローカルではリポジトリルートで次を実行します。
+
+```bash
+npx markdownlint-cli2 "**/*.md"
+python3 scripts/check_ids.py examples/*.md
+```
 
 **任意:** [textlint](https://textlint.github.io/) で技術文書ルールや表記揺れチェックを追加する場合は、チーム方針に合わせて `.textlintrc` を導入してください。
 
@@ -191,7 +218,7 @@ GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行
 
 ## 旧IDから新IDへの対応(破壊的変更)
 
-次リリースで、IDプレフィックスを日本語接頭辞に統一します。詳細は [CHANGELOG.md](./CHANGELOG.md) の `[Unreleased]` を参照してください。
+v0.2.0 で、IDプレフィックスを日本語接頭辞に統一しました。詳細は [CHANGELOG.md](./CHANGELOG.md) の `[0.2.0]` を参照してください。
 
 | 旧ID | 新ID |
 | --- | --- |
@@ -205,5 +232,6 @@ GitHub Actions で PR 時に `markdownlint-cli2` による Markdown 検査を行
 | OI-XX | 未解決-XX |
 | UI-XX(新規) | 画面-XX |
 | REQ-XXXX | 要件-XXXX |
+| TC-XXX | 試験-XX |
 | Must / Should / Could | 必須 / 推奨 / 任意 |
 | Scope IN / Scope OUT | スコープ内 / スコープ外 |
