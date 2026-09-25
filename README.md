@@ -114,7 +114,6 @@ sequenceDiagram
 │   └── pull_request_template.md
 ├── .editorconfig
 ├── .gitignore
-├── .lycheeignore
 ├── .markdownlint.jsonc
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md

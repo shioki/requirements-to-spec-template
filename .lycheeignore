@@ -1,4 +1,0 @@
-# v0.1.0 と v0.2.0 のタグはメンテナが push するまで compare URL が 404 になる。
-# タグ作成後にこの2行は削除する。
-https://github.com/shioki/requirements-to-spec-template/compare/v0\.1\.0\.\.\.v0\.2\.0
-https://github.com/shioki/requirements-to-spec-template/compare/v0\.2\.0\.\.\.HEAD

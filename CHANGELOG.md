@@ -23,6 +23,7 @@
 - 表組みを compact スタイルに揃え、強調だけの行を見出しまたは本文にして markdownlint を通過できるようにした
 - 非機能要求の参照規格を ISO/IEC 25010:2023(JIS X 25010:2025)に更新した
 - `CONTRIBUTING.md` から Issue/PR の項目定義を外し、`.github/` のテンプレートへのリンクだけにした
+- `v0.1.0` と `v0.2.0` のタグ作成後、CHANGELOG の compare URL を `.lycheeignore` から外した
 
 ## [0.2.0] - 2026-09-25
 
