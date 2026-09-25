@@ -30,7 +30,8 @@ def mermaid_files() -> list[Path]:
 
 def puppeteer_config(directory: Path) -> Path:
     config: dict[str, object] = {
-        "args": ["--no-sandbox", "--disable-dev-shm-usage"],
+        "args": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+        "timeout": 120000,
     }
     chrome = os.environ.get("CHROME_PATH") or shutil.which("chromium") or shutil.which("google-chrome")
     if chrome:
@@ -80,6 +81,25 @@ def main() -> int:
                 text=True,
             )
             relative = path.relative_to(REPO_ROOT)
+            launch_error = "TimeoutError" in result.stderr or "WS endpoint" in result.stderr
+            if result.returncode != 0 and launch_error:
+                print(f"retry: {relative}", file=sys.stderr)
+                result = subprocess.run(
+                    [
+                        *command,
+                        "-i",
+                        str(path),
+                        "-o",
+                        str(output),
+                        "-p",
+                        str(config),
+                        "-e",
+                        "svg",
+                    ],
+                    cwd=REPO_ROOT,
+                    capture_output=True,
+                    text=True,
+                )
             if result.returncode != 0:
                 failures += 1
                 print(f"failed: {relative}", file=sys.stderr)
