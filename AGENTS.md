@@ -1,11 +1,6 @@
----
-description: requirements-to-spec-template のプロジェクト規約(ID体系・命名・表記・更新の波及範囲)
-alwaysApply: true
----
+# AGENTS.md
 
-# プロジェクト規約
-
-このリポジトリは Webアプリ開発専用の要求仕様書テンプレート集です。`docs/cursor-handoff.md` は v0.2.0 前後の作業指示の記録で、現在のバックログではありません。
+Webアプリ開発専用の要求仕様書テンプレート集そのもののリポジトリです。Cursor / Claude Code / Codex など、AGENTS.md を読むエージェント向けの規約をまとめます。`docs/cursor-handoff.md` は v0.2.0 前後の作業指示の記録で、現在のバックログではありません。
 
 ## ID体系
 
@@ -43,5 +38,5 @@ alwaysApply: true
 
 ## 品質チェック
 
-- コミット前に `npx markdownlint-cli2 "**/*.md"` を実行する(設定は `.markdownlint.jsonc`)
+- コミット前に `npx markdownlint-cli2 "**/*.md"` と `python3 scripts/check_ids.py examples/*.md` を実行する(設定は `.markdownlint.jsonc`)
 - コミットメッセージは Conventional Commits(`docs:` / `ci:` / `chore:` / `feat:`)、本文は日本語

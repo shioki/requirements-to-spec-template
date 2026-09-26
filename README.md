@@ -122,6 +122,8 @@ sequenceDiagram
 │   │   ├── bug_report.md
 │   │   └── feature_request.md
 │   └── pull_request_template.md
+├── AGENTS.md                  # エージェント向けの規約(Cursor / Claude Code / Codex 共通)
+├── CLAUDE.md                  # @AGENTS.md の import のみ
 ├── .editorconfig
 ├── .gitignore
 ├── .lycheeignore
