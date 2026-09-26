@@ -1,7 +1,15 @@
 # requirements-to-spec-template
 
-要求を仕様に落とし込むための、GitHub公開向けテンプレート集です。  
+Webアプリ開発の要求を仕様に落とし込むための、GitHub公開向けテンプレート集です。  
 会議メモやチャットの断片を、合意可能かつテスト可能な要求仕様書に変換することを目的にしています。
+
+対象は Webアプリ開発に限定しています。新規の Webアプリ開発では、次の3つをそろえて使うことを前提にしています。
+
+- 要求仕様: このリポジトリ
+- 知識と判断の記録: [Cursor Knowledge Management System](https://github.com/shioki/Cursor-Knowledge-Management-System)
+- 画面設計とアクセシビリティ: [デジタル庁デザインシステム(DADS)](https://design.digital.go.jp/dads/)
+
+Webアプリ以外の要求仕様に使う場合は、汎用テンプレートだった [v0.2.0](https://github.com/shioki/requirements-to-spec-template/releases/tag/v0.2.0) を参照してください。
 
 本リポジトリは、以下の記事の考え方を参考に構成しています。  
 [要求を仕様に落とすテンプレートを作ってみた](https://zenn.dev/channnnsm/articles/c3a6de22e71f86)
@@ -72,7 +80,7 @@ sequenceDiagram
 
 ## 対象読者
 
-- 要件定義を標準化したい開発チーム
+- Webアプリの要件定義を標準化したい開発チーム
 - 顧客との合意形成に使える仕様書フォーマットが必要なプロダクトマネージャー(PM)/プロダクトオーナー(PO)
 - AI実装前に仕様の曖昧さを減らしたいエンジニア
 

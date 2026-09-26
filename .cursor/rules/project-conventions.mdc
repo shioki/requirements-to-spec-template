@@ -5,7 +5,7 @@ alwaysApply: true
 
 # プロジェクト規約
 
-このリポジトリは要求仕様書テンプレート集です。改善バックログは `docs/cursor-handoff.md` にあります。
+このリポジトリは Webアプリ開発専用の要求仕様書テンプレート集です。改善バックログは `docs/cursor-handoff.md` にあります。
 
 ## ID体系
 
