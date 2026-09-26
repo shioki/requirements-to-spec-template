@@ -8,6 +8,7 @@
 
 ### Added
 
+- 画面要求に画面遷移図(Mermaid)の節を追加
 - 役割・権限の章(`権限-XX`)を追加。未ログインの利用者も役割として書き、表に無い組み合わせは拒否とみなす
 - リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
 - `.gitignore` を追加
