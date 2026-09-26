@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
 # 要求仕様の Agent Skills と docs/requirements/ を導入先のプロジェクトに配置する。
 #
-#   bash scripts/install.sh <導入先> [--skills-dir DIR]
+#   bash scripts/install.sh <導入先> [--skills-dir DIR] [--with-agents-md]
 #
 # 既定のスキル配置先は .agents/skills(Cursor / Codex が直接読み、Claude Code は
 # Cursor Knowledge Management System の init.sh が作る .claude/skills のリンク経由で読む)。
 # スキルは配布物なので、再実行すると最新の内容で置き換える。docs/requirements/ の
-# 既存ファイルは変更しない。
+# 既存ファイルは変更しない。--with-agents-md は導入先の AGENTS.md に要求仕様の節を
+# 追記する(再実行すると同じ節を置き換える)。
 set -eu
 
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 SKILLS="requirements-spec draft-spec review-spec"
 SKILLS_DIR=".agents/skills"
+WITH_AGENTS_MD=false
 TARGET=""
 
 usage() {
-  sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '2,11p' "$0" | sed 's/^# \{0,1\}//'
 }
 
 while [ $# -gt 0 ]; do
@@ -25,6 +27,7 @@ while [ $# -gt 0 ]; do
       SKILLS_DIR=$2
       shift
       ;;
+    --with-agents-md) WITH_AGENTS_MD=true ;;
     -h|--help) usage; exit 0 ;;
     -*) echo "不明なオプション: $1" >&2; usage >&2; exit 2 ;;
     *)
@@ -64,6 +67,32 @@ else
 | --- | --- | --- |
 INDEX
   echo "作成: docs/requirements/README.md"
+fi
+
+if [ "$WITH_AGENTS_MD" = true ]; then
+  agents="$TARGET/AGENTS.md"
+  snippet="$ROOT/templates/AGENTS.requirements.md"
+  begin="<!-- requirements-to-spec-template:begin -->"
+  end="<!-- requirements-to-spec-template:end -->"
+  if [ ! -e "$agents" ]; then
+    printf '# AGENTS.md\n\n' > "$agents"
+    cat "$snippet" >> "$agents"
+    echo "作成: AGENTS.md"
+  elif grep -qF "$begin" "$agents"; then
+    tmp=$(mktemp)
+    SNIPPET="$snippet" BEGIN_MARK="$begin" END_MARK="$end" awk '
+      $0 == ENVIRON["BEGIN_MARK"] { while ((getline line < ENVIRON["SNIPPET"]) > 0) print line; skip = 1; next }
+      $0 == ENVIRON["END_MARK"] { skip = 0; next }
+      !skip { print }
+    ' "$agents" > "$tmp"
+    cat "$tmp" > "$agents"
+    rm -f "$tmp"
+    echo "要求仕様の節を置き換え: AGENTS.md"
+  else
+    printf '\n' >> "$agents"
+    cat "$snippet" >> "$agents"
+    echo "要求仕様の節を追記: AGENTS.md"
+  fi
 fi
 
 echo "requirements-to-spec-template $VERSION を $TARGET に導入しました"

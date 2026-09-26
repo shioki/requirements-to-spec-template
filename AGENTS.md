@@ -8,6 +8,7 @@ Webアプリ開発専用の要求仕様書テンプレート集そのものの�
 
 - `skills/requirements-spec/references/` と `skills/requirements-spec/scripts/` は生成物。直接編集せず、正本(`template.md`、`template-lite.md`、`docs/writing-guide.md`、`assets/screens/_template/`、`scripts/check_ids.py`)を直してから `python3 scripts/sync_skill.py` を実行する
 - `skills/draft-spec/` と `skills/review-spec/` は `/` で明示起動するアクションスキル(`disable-model-invocation: true`)。指示の内容は `docs/prompts/` のプロンプト例と対応しているので、片方を変えたらもう片方も直す
+- `templates/AGENTS.requirements.md` は導入先の `AGENTS.md` に `scripts/install.sh --with-agents-md` で追記される。begin / end のコメント行は置き換えの目印なので変えない
 - `SKILL.md` の frontmatter は Agent Skills 仕様のキーだけを使う。`name` はフォルダ名と同じ kebab-case にする
 
 ## ID体系

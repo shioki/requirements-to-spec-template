@@ -117,6 +117,8 @@ sequenceDiagram
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
+├── templates/
+│   └── AGENTS.requirements.md # 導入先の AGENTS.md に追記する要求仕様の節
 ├── docs/
 │   ├── writing-guide.md
 │   └── prompts/
