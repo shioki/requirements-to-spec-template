@@ -48,5 +48,5 @@ Webアプリ開発専用の要求仕様書テンプレート集そのものの�
 
 ## 品質チェック
 
-- コミット前に `npx markdownlint-cli2 "**/*.md"`、`python3 scripts/check_ids.py examples/*.md`、`python3 scripts/sync_skill.py --check` を実行する(設定は `.markdownlint.jsonc`)
+- コミット前に `npx markdownlint-cli2 "**/*.md"`、`python3 scripts/check_ids.py examples/*.md`、`python3 scripts/check_skills.py` を実行する(設定は `.markdownlint.jsonc`)
 - コミットメッセージは Conventional Commits(`docs:` / `ci:` / `chore:` / `feat:`)、本文は日本語

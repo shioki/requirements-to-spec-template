@@ -111,7 +111,8 @@ sequenceDiagram
 │   ├── generate_screen_placeholders.py
 │   ├── check_mermaid.py
 │   ├── check_ids.py
-│   └── sync_skill.py          # 正本から skills/requirements-spec/ の生成物を作る
+│   ├── sync_skill.py          # 正本から skills/requirements-spec/ の生成物を作る
+│   └── check_skills.py        # SKILL.md の検査と生成物の同期検査
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
@@ -208,12 +209,14 @@ Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github
 - `lychee` によるリンク切れ検査
 - `@mermaid-js/mermaid-cli` による Mermaid 構文検査(`scripts/check_mermaid.py`)
 - `scripts/check_ids.py` による要求IDとトレーサビリティの整合検査
+- `scripts/check_skills.py` による Agent Skills の frontmatter 検査と、スキルの生成物が正本と一致しているかの検査
 
 ローカルではリポジトリルートで次を実行します。
 
 ```bash
 npx markdownlint-cli2 "**/*.md"
 python3 scripts/check_ids.py examples/*.md
+python3 scripts/check_skills.py
 ```
 
 **任意:** [textlint](https://textlint.github.io/) で技術文書ルールや表記揺れチェックを追加する場合は、チーム方針に合わせて `.textlintrc` を導入してください。

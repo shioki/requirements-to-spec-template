@@ -10,6 +10,7 @@
 
 - 要求仕様の Agent Skill `skills/requirements-spec/` を追加。仕様書の置き場所(`docs/requirements/`)、実装前に読む箇所、書くときの規則、整合の検査を指示する。テンプレート・記述ガイド・画像・`check_ids.py` は `scripts/sync_skill.py` でルートの正本から生成する
 - アクションスキル `/draft-spec`(会議メモから要求仕様書の草案を作る)と `/review-spec`(曖昧な記述と抜けを指摘する)を追加
+- CI に `scripts/check_skills.py` を追加。SKILL.md の frontmatter を Agent Skills 仕様に沿って検査し、スキルの生成物が正本と一致しているかを確かめる
 - 未解決事項に `判断記録` 列を追加。解決した理由は Cursor Knowledge Management System の判断記録などに残し、その場所を書く
 
 ### Changed
