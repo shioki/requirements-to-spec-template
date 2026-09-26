@@ -17,6 +17,7 @@
 
 ### Changed
 
+- README に、Webアプリのプロジェクトへの導入手順(導入スクリプトと `gh skill`)を記載
 - エージェント向けの規約を `.cursor/rules/project-conventions.mdc`(`alwaysApply: true`)から `AGENTS.md` に移した。`CLAUDE.md` は `@AGENTS.md` の import のみ
 
 ## [0.3.0] - 2026-09-26
