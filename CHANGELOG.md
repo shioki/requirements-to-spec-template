@@ -6,6 +6,26 @@
 
 ## [Unreleased]
 
+### Changed
+
+- `docs/cursor-handoff.md` は当時の記録として残し、v0.4.0 で削除した `.cursor/rules/project-conventions.mdc` へのリンクをリンク検査の対象外にした
+
+## [0.4.0] - 2026-09-26
+
+### Added
+
+- 要求仕様の Agent Skill `skills/requirements-spec/` を追加。仕様書の置き場所(`docs/requirements/`)、実装前に読む箇所、書くときの規則、整合の検査を指示する。テンプレート・記述ガイド・画像・`check_ids.py` は `scripts/sync_skill.py` でルートの正本から生成する
+- アクションスキル `/draft-spec`(会議メモから要求仕様書の草案を作る)と `/review-spec`(曖昧な記述と抜けを指摘する)を追加
+- `scripts/install.sh --with-agents-md` で、導入先の `AGENTS.md` に要求仕様の節(`templates/AGENTS.requirements.md`)を追記する。実装前に `機能-XX` と受け入れ基準を読むこと、仕様に無い挙動を推測で実装しないことなどを指示する。再実行すると同じ節を置き換える
+- 導入スクリプト `scripts/install.sh` を追加。3つのスキルを導入先の `.agents/skills/`(`--skills-dir` で変更可)に置き、`docs/requirements/` と一覧の `README.md` を作る。再実行するとスキルだけを置き換える
+- CI に `scripts/check_skills.py` を追加。SKILL.md の frontmatter を Agent Skills 仕様に沿って検査し、スキルの生成物が正本と一致しているかを確かめる
+- 未解決事項に `判断記録` 列を追加。解決した理由は Cursor Knowledge Management System の判断記録などに残し、その場所を書く
+
+### Changed
+
+- README に、Webアプリのプロジェクトへの導入手順(導入スクリプトと `gh skill`)を記載
+- エージェント向けの規約を `.cursor/rules/project-conventions.mdc`(`alwaysApply: true`)から `AGENTS.md` に移した。`CLAUDE.md` は `@AGENTS.md` の import のみ
+
 ## [0.3.0] - 2026-09-26
 
 ### Added
@@ -78,7 +98,8 @@
 - `CONTRIBUTING.md`
 - 公開向けに整理した `README.md`
 
-[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.1.0...v0.2.0
 

@@ -1,3 +1,5 @@
+<!-- 生成物: template-lite.md から scripts/sync_skill.py で生成。直接編集しない -->
+
 # Webアプリ要求仕様書テンプレート(最小版)
 
 小規模なWebアプリ案件向けです。画面・非機能・トレーサビリティまで書く場合は [`template.md`](template.md) を使います。

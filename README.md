@@ -69,6 +69,34 @@ sequenceDiagram
     失敗時は「ログイン情報が正しくありません」と表示する。
 ```
 
+## Webアプリのプロジェクトへの導入
+
+要求仕様の Agent Skills(`requirements-spec`、`/draft-spec`、`/review-spec`)と `docs/requirements/` を、開発するWebアプリのリポジトリに置きます。
+
+### 導入スクリプト(推奨)
+
+タグを固定して取得し、導入先を指定して実行します。
+
+```bash
+git clone --depth 1 --branch v0.4.0 https://github.com/shioki/requirements-to-spec-template.git /tmp/requirements-to-spec-template
+bash /tmp/requirements-to-spec-template/scripts/install.sh /path/to/your-project --with-agents-md
+```
+
+- スキルは `.agents/skills/` に置かれる。Cursor と Codex はそのまま読む
+- Claude Code は `.claude/skills/` しか探索しない。[Cursor Knowledge Management System](https://github.com/shioki/Cursor-Knowledge-Management-System) の `init.sh` を先に実行しておくと、`.claude/skills` が `.agents/skills` へのリンクになり、そのまま読める。使わない場合は `--skills-dir .claude/skills` を付ける
+- `--with-agents-md` は、導入先の `AGENTS.md` に「実装前に `機能-XX` と受け入れ基準を読む」などの節を追記する。無ければ作る
+- 再実行すると、スキルだけを新しい版で置き換える。`docs/requirements/` の仕様書は変更しない
+
+### gh skill
+
+スキル単位で入れる場合は [`gh skill`](https://cli.github.com/manual/gh_skill)(GitHub CLI v2.90.0 以上)を使います。`docs/requirements/` と `AGENTS.md` の節は作られません。
+
+```bash
+gh skill install shioki/requirements-to-spec-template requirements-spec --agent cursor --pin v0.4.0
+gh skill install shioki/requirements-to-spec-template draft-spec --agent cursor --pin v0.4.0
+gh skill install shioki/requirements-to-spec-template review-spec --agent cursor --pin v0.4.0
+```
+
 ## このリポジトリでできること
 
 - 要求(Why)と要件/仕様(What)を分離して整理する
@@ -88,6 +116,8 @@ sequenceDiagram
 
 ## AI での使い方
 
+導入したプロジェクトでは、エージェントが `requirements-spec` スキルを読んで仕様書を参照します。草案は `/draft-spec`、レビューは `/review-spec` で作ります。スキルを使わずチャットに貼って使う場合は、次のプロンプト例を使います。
+
 - [会議メモから要求仕様書を起こす](docs/prompts/meeting-notes-to-spec.md)
 - [仕様書の曖昧語をレビューする](docs/prompts/ambiguity-review.md)
 
@@ -103,13 +133,22 @@ sequenceDiagram
 │       ├── _template/         # template.md が参照する汎用ワイヤーフレーム
 │       ├── saas-feature/      # examples/saas-feature-sample.md 用
 │       └── order-management/  # examples/order-management-sample.md 用
+├── skills/
+│   ├── requirements-spec/     # 要求仕様の Agent Skill(references/ と scripts/ は生成物)
+│   ├── draft-spec/            # /draft-spec: 会議メモから草案を作る
+│   └── review-spec/           # /review-spec: 曖昧な記述と抜けを指摘する
 ├── scripts/
 │   ├── generate_screen_placeholders.py
 │   ├── check_mermaid.py
-│   └── check_ids.py
+│   ├── check_ids.py
+│   ├── sync_skill.py          # 正本から skills/requirements-spec/ の生成物を作る
+│   ├── check_skills.py        # SKILL.md の検査と生成物の同期検査
+│   └── install.sh             # スキルと docs/requirements/ を導入先に配置する
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
+├── templates/
+│   └── AGENTS.requirements.md # 導入先の AGENTS.md に追記する要求仕様の節
 ├── docs/
 │   ├── writing-guide.md
 │   └── prompts/
@@ -122,6 +161,8 @@ sequenceDiagram
 │   │   ├── bug_report.md
 │   │   └── feature_request.md
 │   └── pull_request_template.md
+├── AGENTS.md                  # エージェント向けの規約(Cursor / Claude Code / Codex 共通)
+├── CLAUDE.md                  # @AGENTS.md の import のみ
 ├── .editorconfig
 ├── .gitignore
 ├── .lycheeignore
@@ -201,12 +242,14 @@ Pull Request と `main` への push で、[`.github/workflows/lint.yml`](.github
 - `lychee` によるリンク切れ検査
 - `@mermaid-js/mermaid-cli` による Mermaid 構文検査(`scripts/check_mermaid.py`)
 - `scripts/check_ids.py` による要求IDとトレーサビリティの整合検査
+- `scripts/check_skills.py` による Agent Skills の frontmatter 検査と、スキルの生成物が正本と一致しているかの検査
 
 ローカルではリポジトリルートで次を実行します。
 
 ```bash
 npx markdownlint-cli2 "**/*.md"
 python3 scripts/check_ids.py examples/*.md
+python3 scripts/check_skills.py
 ```
 
 **任意:** [textlint](https://textlint.github.io/) で技術文書ルールや表記揺れチェックを追加する場合は、チーム方針に合わせて `.textlintrc` を導入してください。

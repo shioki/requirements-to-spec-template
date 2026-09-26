@@ -1,3 +1,5 @@
+<!-- 生成物: template.md から scripts/sync_skill.py で生成。直接編集しない -->
+
 # Webアプリ要求仕様書テンプレート
 
 ## ID凡例とプレフィックス

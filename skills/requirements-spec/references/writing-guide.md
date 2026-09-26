@@ -1,6 +1,8 @@
+<!-- 生成物: docs/writing-guide.md から scripts/sync_skill.py で生成。直接編集しない -->
+
 # 要求仕様書 記述ガイド
 
-このガイドは [`template.md`](../template.md) を使ってWebアプリの要求仕様書を作成する際の、最小限のルールと運用手順をまとめたものです。
+このガイドは [`template.md`](template.md) を使ってWebアプリの要求仕様書を作成する際の、最小限のルールと運用手順をまとめたものです。
 
 ## ID凡例(テンプレートと同一)
 
