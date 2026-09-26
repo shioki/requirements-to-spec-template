@@ -104,7 +104,9 @@ sequenceDiagram
 │       ├── saas-feature/      # examples/saas-feature-sample.md 用
 │       └── order-management/  # examples/order-management-sample.md 用
 ├── skills/
-│   └── requirements-spec/     # 要求仕様の Agent Skill(references/ と scripts/ は生成物)
+│   ├── requirements-spec/     # 要求仕様の Agent Skill(references/ と scripts/ は生成物)
+│   ├── draft-spec/            # /draft-spec: 会議メモから草案を作る
+│   └── review-spec/           # /review-spec: 曖昧な記述と抜けを指摘する
 ├── scripts/
 │   ├── generate_screen_placeholders.py
 │   ├── check_mermaid.py
