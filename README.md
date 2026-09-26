@@ -112,7 +112,8 @@ sequenceDiagram
 │   ├── check_mermaid.py
 │   ├── check_ids.py
 │   ├── sync_skill.py          # 正本から skills/requirements-spec/ の生成物を作る
-│   └── check_skills.py        # SKILL.md の検査と生成物の同期検査
+│   ├── check_skills.py        # SKILL.md の検査と生成物の同期検査
+│   └── install.sh             # スキルと docs/requirements/ を導入先に配置する
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
