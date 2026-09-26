@@ -3,7 +3,8 @@
 
 定義は各表の ID 列。参照は本文中の `業務-01` 形式。
 `機能-01〜03` は 機能-01、機能-02、機能-03 に展開する。
-`試験-XX` はトレーサビリティ表の試験列(または ID 列)にあれば定義済みとみなす。
+`試験-XX` も他のIDと同じく、試験の表の ID 列で定義する。
+トレーサビリティ表の試験列は参照として扱う。
 """
 
 from __future__ import annotations
@@ -14,7 +15,7 @@ import sys
 from pathlib import Path
 
 PREFIXES = (
-    "業務|利用|機能|非機能|制約|連携|前提|未解決|データ|画面|リスク|試験"
+    "業務|利用|機能|非機能|制約|連携|前提|未解決|データ|画面|権限|文言|運用|リスク|試験"
 )
 ID_RE = re.compile(rf"(?:{PREFIXES})-\d{{2}}")
 RANGE_RE = re.compile(
@@ -115,22 +116,18 @@ def check_file(path: Path) -> list[str]:
     rows = traceability_rows(section)
     traced: set[str] = set()
     linked: set[str] = set()
-    tests: set[str] = set()
     for row in rows:
         ids = expand_ids(row)
         row_functions = {item for item in ids if item.startswith("機能-")}
-        row_tests = {item for item in ids if item.startswith("試験-")}
         traced.update(row_functions)
-        tests.update(row_tests)
-        if row_tests:
+        if any(item.startswith("試験-") for item in ids):
             linked.update(row_functions)
-    tests.update(item for item in defined if item.startswith("試験-"))
 
     errors: list[str] = []
     reported: set[tuple[int, str, str]] = set()
     for line_no, line in enumerate(text.splitlines(), start=1):
         for item in sorted(expand_ids(line)):
-            if item in defined or (item.startswith("試験-") and item in tests):
+            if item in defined:
                 continue
             key = (line_no, "未定義参照", item)
             if key not in reported:

@@ -6,8 +6,20 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-26
+
 ### Added
 
+- 画面要求に画面遷移図(Mermaid)の節を追加
+- 画面詳細の主要要素を DADS のコンポーネント名で書く形にした。DADS に無い要素は「独自」と理由を書く
+- 曖昧語レビューのプロンプトに、アクセシビリティ・対応環境・画面文言・未ログイン時の権限・DADS コンポーネント名の抜けを指摘対象として追加
+- 運用・移行要求の章(`運用-XX`)を追加。監視・バックアップ・リリース・移行・問い合わせの担当と時期を書き、移行しないデータも明記する
+- データ要求に `個人情報` 列を追加。個人情報を含むデータは保持期間後の扱いまで書く
+- 試験の章を追加。`試験-XX` を対象・観点・手順・期待結果・種別で定義する
+- 制約条件に、準拠する DADS の版とデザイントークンの版(Tailwind CSS を使う場合はテーマプラグインの版も)を固定する例を追加
+- 非機能要求にアクセシビリティ(JIS X 8341-3:2016 の適合レベルと試験方法)と対応環境(ブラウザ・OS・画面幅)の行を追加
+- 画面文言の章(`文言-XX`)を追加。何が起きたかと次に何をすればよいかを書き、受け入れ基準の異常系から参照する
+- 役割・権限の章(`権限-XX`)を追加。未ログインの利用者も役割として書き、表に無い組み合わせは拒否とみなす
 - リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
 - `.gitignore` を追加
 - `template.md` を他リポジトリへコピーするとき、画面画像ディレクトリも一緒にコピーするか自プロジェクトの画像へ差し替える注意を README とテンプレートに記載
@@ -18,6 +30,9 @@
 
 ### Changed
 
+- **Breaking:** 役割・権限、画面文言、試験、運用・移行要求の章の追加に伴い、`template.md` の章番号を振り直した
+- **Breaking:** `scripts/check_ids.py` は、トレーサビリティ表の試験列を `試験-XX` の定義とみなさなくなった。「試験」の表で定義する
+- **Breaking:** 対象を Webアプリ開発に限定した。知識管理の Cursor Knowledge Management System、デジタル庁デザインシステム(DADS)と組み合わせて使う前提にする。Webアプリ以外の用途は v0.2.0 を参照する
 - Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除
 - README にローカルでの `npx markdownlint-cli2 "**/*.md"` 実行手順を記載
 - 表組みを compact スタイルに揃え、強調だけの行を見出しまたは本文にして markdownlint を通過できるようにした
@@ -63,7 +78,8 @@
 - `CONTRIBUTING.md`
 - 公開向けに整理した `README.md`
 
-[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.1.0...v0.2.0
 
 ---
