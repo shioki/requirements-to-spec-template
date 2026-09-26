@@ -1,2 +1,4 @@
 # www.iso.org は GitHub Actions から 403 を返すことがある。規格ページ自体は公開されている。
 https://www\.iso\.org/
+# docs/cursor-handoff.md は当時の作業指示の記録で、v0.4.0 で AGENTS.md に移した規約ファイルへのリンクを当時のまま残している。
+file://.*/\.cursor/rules/project-conventions\.mdc$

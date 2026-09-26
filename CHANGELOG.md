@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- `docs/cursor-handoff.md` は当時の記録として残し、v0.4.0 で削除した `.cursor/rules/project-conventions.mdc` へのリンクをリンク検査の対象外にした
+
 ## [0.4.0] - 2026-09-26
 
 ### Added
