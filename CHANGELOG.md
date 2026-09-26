@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-26
+
 ### Added
 
 - 画面要求に画面遷移図(Mermaid)の節を追加
@@ -76,7 +78,8 @@
 - `CONTRIBUTING.md`
 - 公開向けに整理した `README.md`
 
-[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.1.0...v0.2.0
 
 ---
