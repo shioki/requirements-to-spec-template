@@ -10,6 +10,7 @@
 
 - 画面要求に画面遷移図(Mermaid)の節を追加
 - 画面詳細の主要要素を DADS のコンポーネント名で書く形にした。DADS に無い要素は「独自」と理由を書く
+- 画面文言の章(`文言-XX`)を追加。何が起きたかと次に何をすればよいかを書き、受け入れ基準の異常系から参照する
 - 役割・権限の章(`権限-XX`)を追加。未ログインの利用者も役割として書き、表に無い組み合わせは拒否とみなす
 - リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
 - `.gitignore` を追加
@@ -21,7 +22,7 @@
 
 ### Changed
 
-- **Breaking:** 役割・権限の章の追加に伴い、`template.md` の「機能要求」以降の章番号を +1 した
+- **Breaking:** 役割・権限、画面文言の章の追加に伴い、`template.md` の章番号を振り直した
 - **Breaking:** 対象を Webアプリ開発に限定した。知識管理の Cursor Knowledge Management System、デジタル庁デザインシステム(DADS)と組み合わせて使う前提にする。Webアプリ以外の用途は v0.2.0 を参照する
 - Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除
 - README にローカルでの `npx markdownlint-cli2 "**/*.md"` 実行手順を記載
