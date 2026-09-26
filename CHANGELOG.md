@@ -8,6 +8,7 @@
 
 ### Added
 
+- 役割・権限の章(`権限-XX`)を追加。未ログインの利用者も役割として書き、表に無い組み合わせは拒否とみなす
 - リンク切れチェック(lychee)と Mermaid 構文チェック(`scripts/check_mermaid.py`)を CI に追加
 - `.gitignore` を追加
 - `template.md` を他リポジトリへコピーするとき、画面画像ディレクトリも一緒にコピーするか自プロジェクトの画像へ差し替える注意を README とテンプレートに記載
@@ -18,6 +19,7 @@
 
 ### Changed
 
+- **Breaking:** 役割・権限の章の追加に伴い、`template.md` の「機能要求」以降の章番号を +1 した
 - **Breaking:** 対象を Webアプリ開発に限定した。知識管理の Cursor Knowledge Management System、デジタル庁デザインシステム(DADS)と組み合わせて使う前提にする。Webアプリ以外の用途は v0.2.0 を参照する
 - Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除
 - README にローカルでの `npx markdownlint-cli2 "**/*.md"` 実行手順を記載
