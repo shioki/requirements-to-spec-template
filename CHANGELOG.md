@@ -6,6 +6,8 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-26
+
 ### Added
 
 - 要求仕様の Agent Skill `skills/requirements-spec/` を追加。仕様書の置き場所(`docs/requirements/`)、実装前に読む箇所、書くときの規則、整合の検査を指示する。テンプレート・記述ガイド・画像・`check_ids.py` は `scripts/sync_skill.py` でルートの正本から生成する
@@ -92,7 +94,8 @@
 - `CONTRIBUTING.md`
 - 公開向けに整理した `README.md`
 
-[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/shioki/requirements-to-spec-template/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/shioki/requirements-to-spec-template/compare/v0.1.0...v0.2.0
 
