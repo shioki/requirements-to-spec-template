@@ -10,6 +10,7 @@
 
 - 画面要求に画面遷移図(Mermaid)の節を追加
 - 画面詳細の主要要素を DADS のコンポーネント名で書く形にした。DADS に無い要素は「独自」と理由を書く
+- 運用・移行要求の章(`運用-XX`)を追加。監視・バックアップ・リリース・移行・問い合わせの担当と時期を書き、移行しないデータも明記する
 - データ要求に `個人情報` 列を追加。個人情報を含むデータは保持期間後の扱いまで書く
 - 試験の章を追加。`試験-XX` を対象・観点・手順・期待結果・種別で定義する
 - 制約条件に、準拠する DADS の版とデザイントークンの版(Tailwind CSS を使う場合はテーマプラグインの版も)を固定する例を追加
@@ -26,7 +27,7 @@
 
 ### Changed
 
-- **Breaking:** 役割・権限、画面文言、試験の章の追加に伴い、`template.md` の章番号を振り直した
+- **Breaking:** 役割・権限、画面文言、試験、運用・移行要求の章の追加に伴い、`template.md` の章番号を振り直した
 - **Breaking:** `scripts/check_ids.py` は、トレーサビリティ表の試験列を `試験-XX` の定義とみなさなくなった。「試験」の表で定義する
 - **Breaking:** 対象を Webアプリ開発に限定した。知識管理の Cursor Knowledge Management System、デジタル庁デザインシステム(DADS)と組み合わせて使う前提にする。Webアプリ以外の用途は v0.2.0 を参照する
 - Markdown lint の GitHub Actions を有効化(`.github/workflows/lint.yml`)。サンプルだった `docs/samples/github-actions-markdown-lint.yml` は削除

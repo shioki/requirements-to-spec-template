@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 PREFIXES = (
-    "業務|利用|機能|非機能|制約|連携|前提|未解決|データ|画面|権限|文言|リスク|試験"
+    "業務|利用|機能|非機能|制約|連携|前提|未解決|データ|画面|権限|文言|運用|リスク|試験"
 )
 ID_RE = re.compile(rf"(?:{PREFIXES})-\d{{2}}")
 RANGE_RE = re.compile(
