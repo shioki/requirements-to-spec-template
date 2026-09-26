@@ -103,10 +103,13 @@ sequenceDiagram
 │       ├── _template/         # template.md が参照する汎用ワイヤーフレーム
 │       ├── saas-feature/      # examples/saas-feature-sample.md 用
 │       └── order-management/  # examples/order-management-sample.md 用
+├── skills/
+│   └── requirements-spec/     # 要求仕様の Agent Skill(references/ と scripts/ は生成物)
 ├── scripts/
 │   ├── generate_screen_placeholders.py
 │   ├── check_mermaid.py
-│   └── check_ids.py
+│   ├── check_ids.py
+│   └── sync_skill.py          # 正本から skills/requirements-spec/ の生成物を作る
 ├── examples/
 │   ├── order-management-sample.md
 │   └── saas-feature-sample.md
