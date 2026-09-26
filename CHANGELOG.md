@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 未解決事項に `判断記録` 列を追加。解決した理由は Cursor Knowledge Management System の判断記録などに残し、その場所を書く
+
 ### Changed
 
 - エージェント向けの規約を `.cursor/rules/project-conventions.mdc`(`alwaysApply: true`)から `AGENTS.md` に移した。`CLAUDE.md` は `@AGENTS.md` の import のみ
